@@ -1,39 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
-import { Container } from './styles';
+import { Container, List } from './styles';
 
 export default function UploadImages() {
   const [uploads, setUploads] = useState([]);
+  const [imgURL, setImgURL] = useState([]);
+
+  useEffect(() => {
+    setImgURL(uploads.map((file) => URL.createObjectURL(file)));
+  }, [uploads]);
 
   function onChange(e) {
-    setUploads(e.target.files);
+    const { files } = e.target;
+    setUploads(Array.from(files));
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     const data = new FormData();
+
     if (uploads.length > 0) {
-      Array.from(uploads).forEach((file) => data.append('file_upload', file));
-      await api.post('upload', data).then((res) => {
-        // eslint-disable-next-line no-console
-        console.log(res.statusText);
+      uploads.forEach((file) => {
+        data.append('file_upload[file]', file);
       });
+      await api
+        .post('upload', data)
+        .catch(() => toast.error('Oops! não conseguimos enviar'));
     }
   }
   return (
     <Container>
-      {}
-      <img src={uploads} alt="" />
+      <h1>Galeria</h1>
+
+      <List>
+        {imgURL.map((url) => (
+          <li key={url}>
+            <img src={url} alt="" />
+          </li>
+        ))}
+      </List>
+
       <form onSubmit={handleSubmit}>
         <input
           type="file"
-          id="file_upload"
-          name="file_upload"
+          id="file_upload[file]"
+          name="file_upload[file]"
           multiple
           accept="image/*"
-          onChange={(e) => onChange(e)}
+          onChange={onChange}
         />
         <input type="submit" value="Enviar" />
       </form>
