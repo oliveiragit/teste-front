@@ -34,7 +34,13 @@ No mapa do item 3, implementar quantidades por país conforme exemplo:
 https://www.amcharts.com/demos/map-image-drill-down/
 
 6. Implementação de Gráficos:
-Implementar utilizando qualquer biblioteca de sua escolha os gráficos abaixo:
+Implementar utilizando qualquer biblioteca de sua escolha (pode ser mais de uma) os gráficos abaixo:
+
+![Gráfico 1](graphs-1.png?raw=true "Gráfico 1")
+![Gráfico 2](graphs-2.png?raw=true "Gráfico 2")
+![Gráfico 3](graphs-3.png?raw=true "Gráfico 3")
+![Gráfico 4](graphs-4.png?raw=true "Gráfico 4")
+![Gráfico 5](graphs-4.png?raw=true "Gráfico 5")
 
 **Observações:**
 Note que existem diversas tarefas, algumas complexas e outras mais simples, por isso não há a necessidade de fazer todas.
