@@ -14,7 +14,29 @@ Caso tenha iniciado alguma das atividades e a abandonou, pedimos que informe tam
 Utilizar uma biblioteca de sua escolha par afazer upload de arquivos múltiplos, como se fosse para uma galeria de imagens para cadastro de produtos em uma loja, ou imagens na galeria de uma postagem.
 
 2. Consumo de API para envio de arquivos
-Na galeria do item anterior, fazer o envio das imagens para a API: front.topnode.dev/upload
+Na galeria do item anterior, fazer o envio das imagens para a API:
+https://teste.topnode.com.br/upload
+
+- Enviar POST para a API, como form-data, com o arquivo no campo "file_upload[file]".
+
+Exemplo HTTP:
+```
+POST /upload HTTP/1.1
+Host: teste.topnode.com.br
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file_upload[file]"; filename="arquivo-para-upload.png"
+Content-Type: image/png
+
+(data)
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+```
+
+- Exemplo da API no postman: https://www.getpostman.com/collections/018502682b8b55b53cd4
+
+
+
 
 3. Implementação de Mapa amCharts
 Implementar um mapa do globo utilizando amCharts em uma tela que utiliza React, conforme exemplo abaixo:
