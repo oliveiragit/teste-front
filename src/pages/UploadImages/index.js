@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import api from '../../services/api';
-import { Container, List } from './styles';
+import { Container, List, Form } from './styles';
 
 export default function UploadImages() {
   const [uploads, setUploads] = useState([]);
@@ -34,26 +34,29 @@ export default function UploadImages() {
   return (
     <Container>
       <h1>Galeria</h1>
+      <div>
+        <List>
+          {imgURL.map((url) => (
+            <li key={url}>
+              <img src={url} alt="" />
+            </li>
+          ))}
+        </List>
 
-      <List>
-        {imgURL.map((url) => (
-          <li key={url}>
-            <img src={url} alt="" />
-          </li>
-        ))}
-      </List>
+        <Form onSubmit={handleSubmit}>
+          <input
+            type="file"
+            className="inputfile"
+            id="inputfile"
+            name="file_upload[file]"
+            multiple
+            accept="image/*"
+            onChange={onChange}
+          />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          id="file_upload[file]"
-          name="file_upload[file]"
-          multiple
-          accept="image/*"
-          onChange={onChange}
-        />
-        <input type="submit" value="Enviar" />
-      </form>
+          <input type="submit" value="Enviar" />
+        </Form>
+      </div>
     </Container>
   );
 }
