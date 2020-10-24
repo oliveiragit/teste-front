@@ -1,7 +1,7 @@
 # Instruções
-- Criar um fork deste repositório
+- Criar um fork deste repositório ou um repositório próprio (indiferente).
 - Desenvolver uma (ou mais) das seguintes atividades descritas
-- Enviar o repositório criado a partir do fork para avaliação
+- Enviar o repositório criado para avaliação com detalhes no README.md que forem pertinentes
 
 Qualquer uma das atividades pode ser feita, sem limite de tempo e sem número mínimo ou necessidade de fazer todas, apenas pedimos que quando enviar o resultado, informe quais foram feitas, o tempo que levou.
 
@@ -34,13 +34,7 @@ No mapa do item 3, implementar quantidades por país conforme exemplo:
 https://www.amcharts.com/demos/map-image-drill-down/
 
 6. Implementação de Gráficos:
-Implementar utilizando qualquer biblioteca de sua escolha (pode ser mais de uma) os gráficos abaixo:
-
-![Gráfico 1](graphs-1.png?raw=true "Gráfico 1")
-![Gráfico 2](graphs-2.png?raw=true "Gráfico 2")
-![Gráfico 3](graphs-3.png?raw=true "Gráfico 3")
-![Gráfico 4](graphs-4.png?raw=true "Gráfico 4")
-![Gráfico 5](graphs-4.png?raw=true "Gráfico 5")
+Implementar utilizando qualquer biblioteca de sua escolha (pode ser mais de uma) os gráficos 1 a 5 na raíz deste repositório.
 
 **Observações:**
 Note que existem diversas tarefas, algumas complexas e outras mais simples, por isso não há a necessidade de fazer todas.
