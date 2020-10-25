@@ -1,23 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Container } from './styles';
 
 export default function Header() {
   return (
     <Container>
-      <Link to="/">
-        <span>Home</span>
-      </Link>
-      <Link to="uploadImages">
-        <span>Galeria</span>
-      </Link>
-      <Link to="globe">
-        <span>Globo</span>
-      </Link>
-      <Link to="graphs">
-        <span>Gráficos</span>
-      </Link>
+      <nav className="navbar">
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="uploadImages" activeClassName="active">
+              Galeria
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="globe" activeClassName="active">
+              Globo
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="graphs" activeClassName="active">
+              Gráficos
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </Container>
   );
 }
