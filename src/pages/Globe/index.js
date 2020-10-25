@@ -37,19 +37,58 @@ function Globe() {
     );
     chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
     const lineSeries = chart.series.push(new am4maps.MapLineSeries());
-    lineSeries.mapLines.template.stroke = am4core.color('#e03e96');
+    lineSeries.mapLines.template.stroke = am4core.color('#8A2BE2');
     lineSeries.mapLines.template.strokeWidth = 4;
     lineSeries.data = [
       {
         multiGeoLine: [
           [
-            { latitude: 48.856614, longitude: 2.352222 },
-            { latitude: 19.432608, longitude: -99.133209 },
-            { latitude: 21.306944, longitude: -157.858337 },
+            { latitude: -15.7801, longitude: -47.9292 },
+            { latitude: 51.5072, longitude: -0.1275 },
           ],
         ],
       },
     ];
+    const line2 = chart.series.push(new am4maps.MapLineSeries());
+    line2.mapLines.template.stroke = am4core.color('#e03e96');
+    line2.mapLines.template.strokeWidth = 4;
+    line2.data = [
+      {
+        multiGeoLine: [
+          [
+            { latitude: -15.7801, longitude: -47.9292 },
+            { latitude: 38.7071, longitude: -9.13549 },
+          ],
+        ],
+      },
+    ];
+    const line3 = chart.series.push(new am4maps.MapLineSeries());
+    line3.mapLines.template.stroke = am4core.color('#ffff00');
+    line3.mapLines.template.strokeWidth = 4;
+    line3.data = [
+      {
+        multiGeoLine: [
+          [
+            { latitude: -15.7801, longitude: -47.9292 },
+            { latitude: 38.9041, longitude: -77.0171 },
+          ],
+        ],
+      },
+    ];
+    const line4 = chart.series.push(new am4maps.MapLineSeries());
+    line4.mapLines.template.stroke = am4core.color('#00008B');
+    line4.mapLines.template.strokeWidth = 4;
+    line4.data = [
+      {
+        multiGeoLine: [
+          [
+            { latitude: -15.7801, longitude: -47.9292 },
+            { latitude: -26.20227, longitude: 28.043631 },
+          ],
+        ],
+      },
+    ];
+
     x.current = chart;
 
     return () => {

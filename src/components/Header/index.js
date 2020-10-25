@@ -15,7 +15,7 @@ export default function Header() {
       <Link to="globe">
         <span>Globo</span>
       </Link>
-      <Link to="graph">
+      <Link to="graphs">
         <span>Gráficos</span>
       </Link>
     </Container>

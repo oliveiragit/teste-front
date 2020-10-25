@@ -14,7 +14,7 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/uploadImages" component={UploadImages} />
-        <Route path="/globe" component={Graph} />
+        <Route path="/graphs" component={Graph} />
         <Route path="/globe" component={Globe} />
       </Switch>
     </BrowserRouter>
