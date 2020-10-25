@@ -12,6 +12,12 @@ export default function Header() {
       <Link to="uploadImages">
         <span>Galeria</span>
       </Link>
+      <Link to="globe">
+        <span>Globo</span>
+      </Link>
+      <Link to="graph">
+        <span>Gráficos</span>
+      </Link>
     </Container>
   );
 }
