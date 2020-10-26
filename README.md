@@ -43,7 +43,8 @@ https://teste.topnode.com.br/upload
 Implementar um mapa do globo utilizando amCharts em uma tela que utiliza React, conforme exemplo abaixo:
 https://www.amcharts.com/docs/v4/tutorials/map-with-orthographic-globe-projection/
 
-1 - implementar o código
+- implementar o código
+
 20 min
 
 4. Ligar pontos no mapa amCharts:
