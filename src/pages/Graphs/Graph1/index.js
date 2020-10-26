@@ -1,6 +1,6 @@
-import React from "react";
-import GraphChannel from "./GraphChannel";
-import GraphStage from "./GraphStage";
+import React from 'react';
+import GraphChannel from './GraphChannel';
+import GraphStage from './GraphStage';
 
 function Graph1() {
   return (

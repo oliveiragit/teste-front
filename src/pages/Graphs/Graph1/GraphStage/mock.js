@@ -1,6 +1,6 @@
 export const data = [
   {
-    category: "etapas",
+    category: 'etapas',
     preEmbarque: 150053,
     emTransito: 150053,
     desembaraco: 150053,

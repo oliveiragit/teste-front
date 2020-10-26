@@ -1,22 +1,22 @@
 export const data = [
   {
-    imposto: "II",
+    imposto: 'II',
     valor: 2000,
   },
   {
-    imposto: "IPI",
+    imposto: 'IPI',
     valor: 2000,
   },
   {
-    imposto: "PIS",
+    imposto: 'PIS',
     valor: 2400,
   },
   {
-    imposto: "COFINS",
+    imposto: 'COFINS',
     valor: 2600,
   },
   {
-    imposto: "ICMS",
+    imposto: 'ICMS',
     valor: 2800,
   },
 ];

@@ -12,7 +12,7 @@ function Graph3() {
 
   useLayoutEffect(() => {
     // Create chart instance
-    var chart = am4core.create('graph3', am4charts.XYChart);
+    const chart = am4core.create('graph3', am4charts.XYChart);
 
     // Add data
     chart.data = data;
@@ -21,21 +21,21 @@ function Graph3() {
     chart.exporting.menu = new am4core.ExportMenu();
 
     // Create axes
-    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = 'category';
     categoryAxis.renderer.minGridDistance = 5;
 
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.min = 0;
 
     // Create series
-    var series = chart.series.push(new am4charts.ColumnSeries());
+    const series = chart.series.push(new am4charts.ColumnSeries());
     series.dataFields.valueY = 'value';
     series.dataFields.categoryX = 'category';
     series.tooltipText = '{valueY.value}';
 
     chart.cursor = new am4charts.XYCursor();
-    categoryAxis.tooltip.label.adapter.add('text', function (text, target) {
+    categoryAxis.tooltip.label.adapter.add('text', (text, target) => {
       if (target.dataItem) {
         return target.dataItem.dataContext.axisLabel;
       }
@@ -53,7 +53,7 @@ function Graph3() {
     <>
       <h2>Gráfico 3</h2>
       <h4>Faturamento (mil)</h4>
-      <div id="graph3" style={{ width: '100%', height: '500px' }}></div>
+      <div id="graph3" style={{ width: '100%', height: '500px' }} />
     </>
   );
 }

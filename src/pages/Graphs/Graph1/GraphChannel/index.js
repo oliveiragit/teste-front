@@ -12,7 +12,7 @@ function GraphChannel() {
 
   useLayoutEffect(() => {
     // Create chart instance
-    let chart = am4core.create('graphChannel', am4charts.XYChart);
+    const chart = am4core.create('graphChannel', am4charts.XYChart);
     chart.colors.list = [
       am4core.color('#cd213b'),
       am4core.color('#ffd100'),
@@ -26,12 +26,12 @@ function GraphChannel() {
     chart.exporting.menu = new am4core.ExportMenu();
 
     // Create axes
-    let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+    const yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     yAxis.dataFields.category = 'category';
     // yAxis.renderer.grid.template.disabled = true;
     // yAxis.renderer.labels.template.disabled = true;
 
-    let xAxis = chart.xAxes.push(new am4charts.ValueAxis());
+    const xAxis = chart.xAxes.push(new am4charts.ValueAxis());
     xAxis.min = 0;
     xAxis.max = 100;
     xAxis.strictMinMax = true;
@@ -39,7 +39,7 @@ function GraphChannel() {
     xAxis.renderer.minWidth = 6;
 
     function createSeries(field, name) {
-      let series = chart.series.push(new am4charts.ColumnSeries());
+      const series = chart.series.push(new am4charts.ColumnSeries());
       series.columns.template.width = am4core.percent(80);
       series.columns.template.tooltipText =
         "{name}: {valueX.totalPercent.formatNumber('#.00')}%";
@@ -52,7 +52,7 @@ function GraphChannel() {
       series.stacked = true;
       series.tooltip.pointerOrientation = 'vertical';
 
-      let bullet = series.bullets.push(new am4charts.LabelBullet());
+      const bullet = series.bullets.push(new am4charts.LabelBullet());
       bullet.interactionsEnabled = false;
       bullet.label.text = '{valueX} ocorrências';
       bullet.label.fill = am4core.color('#ffffff');
