@@ -5,18 +5,20 @@ import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
 
-function Graph() {
+function GraphTeste() {
   const chart = useRef(null);
 
   useLayoutEffect(() => {
-    const x = am4core.create('chartdiv', am4charts.XYChart);
+    const x = am4core.create('graphTeste', am4charts.XYChart);
 
     x.paddingRight = 20;
 
+    // Export
+    x.exporting.menu = new am4core.ExportMenu();
     const data = [];
     let visits = 10;
 
-    for (let i = 1; i < 366; i += 0) {
+    for (let i = 1; i < 366; i += 1) {
       visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
       data.push({
         date: new Date(2018, 0, i),
@@ -50,6 +52,12 @@ function Graph() {
       x.dispose();
     };
   }, []);
-  return <div id="chartdiv" style={{ width: '100%', height: '500px' }} />;
+  return (
+    <>
+      <h2>Gráfico Teste</h2>
+      <h4>Faturamento (mil)</h4>
+      <div id="graphTeste" style={{ width: '100%', height: '500px' }} />
+    </>
+  );
 }
-export default Graph;
+export default GraphTeste;

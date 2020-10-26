@@ -1,93 +1,106 @@
-import React, { useRef, useLayoutEffect } from 'react';
-import * as am4core from '@amcharts/amcharts4/core';
-import * as am4maps from '@amcharts/amcharts4/maps';
-import am4geodataWorldLow from '@amcharts/amcharts4-geodata/worldLow';
+import React, { useRef, useLayoutEffect } from "react";
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4maps from "@amcharts/amcharts4/maps";
+import am4geodataWorldLow from "@amcharts/amcharts4-geodata/worldLow";
 
-// import { Container } from './styles';
+import { linesData, data } from "./mock";
+import capitals from "./capitals.json";
+
+//import { Container } from "./styles";
 
 function Globe() {
   const x = useRef(null);
 
   useLayoutEffect(() => {
     // Create map instance
-    const chart = am4core.create('chartdiv', am4maps.MapChart);
+    const chart = am4core.create("globeChart", am4maps.MapChart);
     chart.projection = new am4maps.projections.Orthographic();
-    chart.panBehavior = 'rotateLongLat';
+    chart.panBehavior = "rotateLongLat";
     chart.deltaLongitude = 10;
     chart.deltaLatitude = -20;
     chart.geodata = am4geodataWorldLow;
+
     // Create map polygon series
     const polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.north = 90;
+
     // Make map load polygon (like country names) data from GeoJSON
     polygonSeries.useGeodata = true;
+
     // Configure series
     const polygonTemplate = polygonSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = '{name}';
-    polygonTemplate.fill = am4core.color('#74B266');
+    polygonTemplate.tooltipText = "{name}";
+    polygonTemplate.fill = am4core.color("#74B266");
+
     // Create hover state and set alternative fill color
-    const hs = polygonTemplate.states.create('hover');
-    hs.properties.fill = am4core.color('#367B25');
+    const hs = polygonTemplate.states.create("hover");
+    hs.properties.fill = am4core.color("#367B25");
     const graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
-    graticuleSeries.mapLines.template.line.stroke = am4core.color('#67b7dc');
+    graticuleSeries.mapLines.template.line.stroke = am4core.color("#67b7dc");
     graticuleSeries.mapLines.template.line.strokeOpacity = 0.2;
     graticuleSeries.fitExtent = false;
     chart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color(
-      '#aadaff'
+      "#aadaff"
     );
     chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
-    const lineSeries = chart.series.push(new am4maps.MapLineSeries());
-    lineSeries.mapLines.template.stroke = am4core.color('#8A2BE2');
-    lineSeries.mapLines.template.strokeWidth = 4;
-    lineSeries.data = [
-      {
-        multiGeoLine: [
-          [
-            { latitude: -15.7801, longitude: -47.9292 },
-            { latitude: 51.5072, longitude: -0.1275 },
-          ],
-        ],
-      },
-    ];
-    const line2 = chart.series.push(new am4maps.MapLineSeries());
-    line2.mapLines.template.stroke = am4core.color('#e03e96');
-    line2.mapLines.template.strokeWidth = 4;
-    line2.data = [
-      {
-        multiGeoLine: [
-          [
-            { latitude: -15.7801, longitude: -47.9292 },
-            { latitude: 38.7071, longitude: -9.13549 },
-          ],
-        ],
-      },
-    ];
-    const line3 = chart.series.push(new am4maps.MapLineSeries());
-    line3.mapLines.template.stroke = am4core.color('#ffff00');
-    line3.mapLines.template.strokeWidth = 4;
-    line3.data = [
-      {
-        multiGeoLine: [
-          [
-            { latitude: -15.7801, longitude: -47.9292 },
-            { latitude: 38.9041, longitude: -77.0171 },
-          ],
-        ],
-      },
-    ];
-    const line4 = chart.series.push(new am4maps.MapLineSeries());
-    line4.mapLines.template.stroke = am4core.color('#00008B');
-    line4.mapLines.template.strokeWidth = 4;
-    line4.data = [
-      {
-        multiGeoLine: [
-          [
-            { latitude: -15.7801, longitude: -47.9292 },
-            { latitude: -26.20227, longitude: 28.043631 },
-          ],
-        ],
-      },
-    ];
+
+    // CREATE MAP POINTS
+    const values = capitals.map((store) => ({
+      long: am4core.type.toNumber(store.CapitalLongitude),
+      lat: am4core.type.toNumber(store.CapitalLatitude),
+      name: store.CapitalName,
+      count: Math.floor(Math.random() * 10),
+    }));
+    chart.data = values;
+
+    let series = chart.series.push(new am4maps.MapImageSeries());
+    series.dataFields.value = "count";
+
+    let template = series.mapImages.template;
+    template.verticalCenter = "middle";
+    template.horizontalCenter = "middle";
+    template.propertyFields.latitude = "lat";
+    template.propertyFields.longitude = "long";
+    template.tooltipText = "[bold]{count} stores[/]";
+
+    let circle = template.createChild(am4core.Circle);
+    circle.radius = 10;
+    circle.fillOpacity = 0.7;
+    circle.verticalCenter = "middle";
+    circle.horizontalCenter = "middle";
+    circle.nonScaling = true;
+
+    let label = template.createChild(am4core.Label);
+    label.text = "{count}";
+    label.fill = am4core.color("#fff");
+    label.verticalCenter = "middle";
+    label.horizontalCenter = "middle";
+    label.nonScaling = true;
+
+    let heat = series.heatRules.push({
+      target: circle,
+      property: "radius",
+      min: 6,
+      max: 15,
+    });
+
+    //lines
+    function createLines(start, destiny, color) {
+      const lineSeries = chart.series.push(new am4maps.MapLineSeries());
+      lineSeries.mapLines.template.stroke = am4core.color(color);
+      lineSeries.mapLines.template.strokeWidth = 4;
+
+      var line = lineSeries.mapLines.create();
+      line.multiGeoLine = [[start, destiny]];
+
+      // Add a map object to line
+      var arrow = line.arrow;
+      arrow.position = 1;
+      arrow.nonScaling = true;
+    }
+    linesData.forEach((line) => {
+      createLines(line.start, line.destiny, line.color);
+    });
 
     x.current = chart;
 
@@ -97,12 +110,10 @@ function Globe() {
   }, []);
 
   return (
-    <>
-      <h1>
-        WORKS
-        <div id="chartdiv" style={{ width: '100%', height: '500px' }} />
-      </h1>
-    </>
+    <h1>
+      Globo
+      <div id="globeChart" style={{ width: "100%", height: "500px" }} />
+    </h1>
   );
 }
 

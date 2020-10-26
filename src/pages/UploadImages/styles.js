@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 export const Container = styled.div`
-  margin: 5px;
+  margin: 8px;
   height: 100%;
-  background: #fff;
   h1 {
     color: #4f8f67;
   }
