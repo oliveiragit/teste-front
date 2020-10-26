@@ -7,18 +7,18 @@ import Graph3 from './Graph3';
 import Graph4 from './Graph4';
 import Graph5 from './Graph5';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 function Graphs() {
   return (
-    <>
+    <Container>
       <Graph1 />
       <Graph2 />
       <Graph3 />
       <Graph4 />
       <Graph5 />
       <GraphTeste />
-    </>
+    </Container>
   );
 }
 

@@ -59,7 +59,7 @@ function Globe() {
     template.horizontalCenter = 'middle';
     template.propertyFields.latitude = 'lat';
     template.propertyFields.longitude = 'long';
-    template.tooltipText = '[bold]{count} stores[/]';
+    template.tooltipText = '[bold]{name} {count} stores[/]';
 
     const circle = template.createChild(am4core.Circle);
     circle.radius = 10;
