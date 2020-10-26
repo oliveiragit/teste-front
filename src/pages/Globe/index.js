@@ -78,7 +78,7 @@ function Globe() {
     series.heatRules.push({
       target: circle,
       property: 'radius',
-      min: 6,
+      min: 8,
       max: 15,
     });
 
@@ -110,7 +110,7 @@ function Globe() {
   return (
     <h1>
       Globo
-      <div id="globeChart" style={{ width: '100%', height: '500px' }} />
+      <div id="globeChart" style={{ width: '100%', height: '700px' }} />
     </h1>
   );
 }

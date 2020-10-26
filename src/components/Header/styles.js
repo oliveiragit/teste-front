@@ -15,5 +15,6 @@ export const Container = styled.header`
   }
   .navbar li > .active {
     font-weight: bold;
+    color: #4f8f67;
   }
 `;
