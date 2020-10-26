@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -29,6 +30,10 @@ export default function UploadImages() {
       await api
         .post('upload', data)
         .catch(() => toast.error('Oops! não conseguimos enviar'));
+      toast.success('Fotos envidas com sucesso!');
+      setImgURL([]);
+      setUploads([]);
+      document.getElementById('form').reset();
     }
   }
   return (
@@ -43,17 +48,19 @@ export default function UploadImages() {
           ))}
         </List>
 
-        <Form onSubmit={handleSubmit}>
-          <input
-            type="file"
-            className="inputfile"
-            id="inputfile"
-            name="file_upload[file]"
-            multiple
-            accept="image/*"
-            onChange={onChange}
-          />
-
+        <Form id="form" onSubmit={handleSubmit}>
+          <label htmlFor="inputfile">
+            <input
+              type="file"
+              className="inputfile"
+              id="inputfile"
+              name="file_upload[file]"
+              multiple="multiple"
+              accept="image/*"
+              onChange={onChange}
+            />
+            escolha seus arquivos
+          </label>
           <input type="submit" value="Enviar" />
         </Form>
       </div>

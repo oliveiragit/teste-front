@@ -28,8 +28,6 @@ function GraphChannel() {
     // Create axes
     const yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     yAxis.dataFields.category = 'category';
-    // yAxis.renderer.grid.template.disabled = true;
-    // yAxis.renderer.labels.template.disabled = true;
 
     const xAxis = chart.xAxes.push(new am4charts.ValueAxis());
     xAxis.min = 0;

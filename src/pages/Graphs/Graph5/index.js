@@ -32,7 +32,7 @@ function Graph5() {
     chart.legend = new am4charts.Legend();
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = 'category';
+    categoryAxis.dataFields.category = 'day';
     categoryAxis.renderer.minGridDistance = 5;
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -48,7 +48,7 @@ function Graph5() {
       series.columns.template.tooltipText =
         "{name}: {valueY.totalPercent.formatNumber('#.00')}%";
       series.name = 'dentro da média';
-      series.dataFields.categoryX = 'category';
+      series.dataFields.categoryX = 'day';
       series.dataFields.valueY = field;
       series.dataFields.valueYShow = 'totalPercent';
       series.dataItems.template.locations.categoryX = 0.5;
@@ -75,7 +75,7 @@ function Graph5() {
   return (
     <>
       <h2>Gráfico 5</h2>
-      <h4>Faturamento (mil)</h4>
+      <h4>Relação da média do consumo/hora do período</h4>
       <div id="graph5" style={{ width: '100%', height: '500px' }} />
     </>
   );

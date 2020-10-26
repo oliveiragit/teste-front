@@ -1,13 +1,13 @@
 export const data = [
   {
     porto: 'Navegantes',
-    containers: 12200,
+    containers: 10500,
     embarques: 4000,
     lineDash: '5,5',
   },
   {
     porto: 'Itajaí',
-    containers: 10200,
+    containers: 12200,
     embarques: 10000,
     lineDash: '5,5',
   },

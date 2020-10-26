@@ -25,7 +25,7 @@ function Graph2() {
     /* Create axes */
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = 'porto';
-    categoryAxis.renderer.minGridDistance = 30;
+    categoryAxis.renderer.minGridDistance = 5;
 
     /* Create value axis */
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -43,6 +43,8 @@ function Graph2() {
     columnSeries.columns.template.propertyFields.stroke = 'stroke';
     columnSeries.columns.template.propertyFields.strokeWidth = 'strokeWidth';
     columnSeries.columns.template.propertyFields.strokeDasharray = 'columnDash';
+    columnSeries.columns.template.width = am4core.percent(40);
+
     columnSeries.tooltip.label.textAlign = 'middle';
 
     const lineSeries = chart.series.push(new am4charts.LineSeries());

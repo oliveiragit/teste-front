@@ -54,8 +54,7 @@ function GraphTeste() {
   }, []);
   return (
     <>
-      <h2>Gráfico Teste</h2>
-      <h4>Faturamento (mil)</h4>
+      <h2>Gráfico para testes</h2>
       <div id="graphTeste" style={{ width: '100%', height: '500px' }} />
     </>
   );

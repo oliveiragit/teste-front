@@ -24,7 +24,7 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
 
-    'react-hooks/rules-of-hooks': 'error', //hooks
+    'react-hooks/rules-of-hooks': 'error', // hooks
     'react-hooks/exhaustive-deps': 'warn',
   },
 };
